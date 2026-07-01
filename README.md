@@ -15,3 +15,4 @@ chmod +x Plane.Calculator
 ./Plane.Calculator
 ```
 The program as 12 input boxes for the coefficient values of the three planes, clicking solve will produce the intersection if any.
+This application is unsigned. On first launch, macOS may display a security warning. Right click the application and choose Open, or use System Settings → Privacy & Security → Open Anyway.
