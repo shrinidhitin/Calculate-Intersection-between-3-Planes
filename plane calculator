@@ -32,11 +32,13 @@ def solve():
             solution = np.linalg.solve(coeff_matrix, const_vector)
             result_label.config(text=f"Intersection Point: x={solution[0]:.2f}, y={solution[1]:.2f}, z={solution[2]:.2f}")
         elif matrix_rank < aug_rank:
-          result_label.config(text="There are no common points of intersection (the planes are parallel or inconsistent).")
+          result_label.config(text="There are no common points of intersection (the planes are inconsistent).")
         elif matrix_rank == 1 and aug_rank == 1:
             result_label.config(text="Planes exist on the same plane (infinite solutions).")
         elif matrix_rank == 2 and aug_rank == 2:
-            result_label.config(text="Planes intersect at a line")
+            point = np.linalg.lstsq(coeff_matrix, const_vector, rcond=None)[0]
+            direction = np.cross(coeff_matrix[0], coeff_matrix[1])
+            result_label.config(text=f"Line of Intersection: (x, y, z) = ({point[0]:.2f}, {point[1]:.2f}, {point[2]:.2f}) + t({direction[0]:.2f}, {direction[1]:.2f}, {direction[2]:.2f})")
     except ValueError:
         result_label.config(text="Please enter valid numbers for all coefficients.")
 
