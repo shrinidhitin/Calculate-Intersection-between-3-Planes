@@ -30,7 +30,7 @@ def solve():
 
         if matrix_rank == 3:
             solution = np.linalg.solve(coeff_matrix, const_vector)
-            result_label.config(text=f"Intersection Point: x={solution[0]:.2f}, y={solution[1]:.2f}, z={solution[2]:.2f}")
+            result_label.config(text=f"Intersection Point: ({solution[0]:.2f}, {solution[1]:.2f}, {solution[2]:.2f})")
         elif matrix_rank < aug_rank:
           result_label.config(text="There are no common points of intersection (the planes are inconsistent).")
         elif matrix_rank == 1 and aug_rank == 1:
